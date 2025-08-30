@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+
+button:hover,
+a:hover {
+  cursor: pointer;
+}

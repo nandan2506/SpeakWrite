@@ -18,14 +18,14 @@ VoiceNotesApp is a full-stack web application that allows users to record voice 
 
 # Project Structure
 ```
-VoiceNotesApp/
+SpeakWrite/
 │
 ├─ backend/
 │   ├─ controllers/        # Handles API logic (notes.controllers.js)
 │   ├─ models/             # Mongoose models (notes.model.js)
 │   ├─ routes/             # Express routes
 │   ├─ services/           # OpenAI/OpenRouter API services
-│   └─ server.js           # Entry point for backend
+│   └─ app.js           # Entry point for backend
 │
 ├─ frontend/
 │   ├─ src/
@@ -39,21 +39,23 @@ VoiceNotesApp/
 # Installation & Setup
 ## 1. Clone the repository:
 ```
-git clone https://github.com/yourusername/VoiceNotesApp.git
-cd VoiceNotesApp
+git clone https://github.com/nandan2506/SpeakWrite.git
+cd SpeakWrite
 ```
 
 
 ## 2. Backend Setup:
 
-```cd backend
+```
+cd backend
 npm install
 ```
 
 
 ## 3. Create .env file in backend:
 
-```PORT=5000
+```
+PORT=5000
 MONGO_URI=your_mongodb_connection_string
 OPENROUTER_API_KEY=your_openrouter_api_key
 ```
@@ -61,28 +63,29 @@ OPENROUTER_API_KEY=your_openrouter_api_key
 
 ## 4. Start backend server:
 
-npm run dev
+npm run start
 
 
 ## 5. Frontend Setup:
 
-```cd frontend
+```
+cd frontend
 npm install
-npm start
+npm run dev
 ```
 
 
-## 6. Open http://localhost:3000 in your browser.
+## 6. Open http://localhost:5000 in your browser.
 
 # API Endpoints
 ```
 Notes
-Method	Endpoint	Description
-GET	/api/notes	Get all notes
-POST	/api/notes	Create a new note (with audio)
-PUT	/api/notes/:id	Update transcript of a note
-DELETE	/api/notes/:id	Delete a note
-POST	/api/notes/:id/summary	Generate AI summary for a note
+Method	        Endpoint	                    Description
+GET	            /notes/allNotes                 Get all notes
+POST	        /notes/newNote                  Create a new note (with audio)
+PUT	            /notes/updateNote/:id	        Update transcript of a note
+DELETE	        /notes/deleteNote/:id	        Delete a note
+POST	        /notes/summary/:id/	            Generate AI summary for a note
 ```
 
 # Usage
@@ -93,10 +96,11 @@ POST	/api/notes/:id/summary	Generate AI summary for a note
 5. Notes can be updated or deleted at any time.
 
 # Environment Variables
-```Variable	Description
-MONGO_URI	MongoDB connection string
-OPENROUTER_API_KEY	OpenRouter / OpenAI API key for transcription and summarization
-PORT	Backend server port (default: 5000)
+```
+Variable	                Description
+MONGO_URI	                MongoDB connection string
+OPENROUTER_API_KEY	        OpenRouter / OpenAI API key for transcription and summarization
+PORT	                    Backend server port (default: 5000)
 ```
 
 

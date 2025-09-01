@@ -3,7 +3,7 @@ import NoteCard from "./NoteCard";
 
 export default function NoteList({ notes: initialNotes }) {
   const [notes, setNotes] = useState(initialNotes);
-  const baseUrl = "http://localhost:5000"; // change if needed
+  const baseUrl = "https://speakwrite-1.onrender.com"; 
 
 
   // ✅ Edit Transcript
@@ -61,7 +61,7 @@ export default function NoteList({ notes: initialNotes }) {
   return (
   <div className="flex flex-col gap-4 p-4">
     {notes
-      .filter((note) => note && note._id) // prevent undefined/null
+      .filter((note) => note && note._id) 
       .map((note) => (
         <div key={note._id}>
           <NoteCard

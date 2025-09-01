@@ -1,5 +1,5 @@
 const noteModel = require("../models/notes.model");
-const { transcribeAudio, summarizeText } = require("../services/openAi.service");
+const { transcribeWithAssemblyAI, summarizeText } = require("../services/openAi.service");
 require('dotenv').config()
 const apiKey = process.env.OPENAI_API_KEY
 
@@ -27,7 +27,7 @@ const newNotes = async (req, res) => {
       return res.status(400).json({ message: "No audio file uploaded" });
     }
     const audioPath = req.file.path;
-    const transcript = await transcribeAudio(audioPath);
+    const transcript = await transcribeWithAssemblyAI(audioPath);
 
     const newNote = await noteModel.create({
       transcript,
@@ -96,6 +96,7 @@ const generateSummary = async (req, res) => {
       return res.status(400).json({ message: "Summary already generated" });
     }
 
+  
     const summary = await summarizeText(note.transcript);
 
     note.summary = summary;
